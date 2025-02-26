@@ -1,0 +1,28 @@
+{
+  "created": 1740590312426,
+  "description": "",
+  "id": "11",
+  "modified": 1740593865031,
+  "owner": "GRehkemper@esri.com_prof_services",
+  "tags": [],
+  "thumbnail": null,
+  "title": "Listen Selection Change - Basic",
+  "type": "Web Experience",
+  "snippet": "",
+  "typeKeywords": [
+    "EXB Experience",
+    "Ready To Use",
+    "JavaScript",
+    "status: Published",
+    "version:1.16.0"
+  ],
+  "portalUrl": "https://prof-services.maps.arcgis.com",
+  "username": "GRehkemper@esri.com_prof_services",
+  "name": "Listen Selection Change - Basic",
+  "isLocalApp": true,
+  "userRole": "org_admin",
+  "success": true,
+  "text": "",
+  "clearEmptyFields": true,
+  "url": null
+}

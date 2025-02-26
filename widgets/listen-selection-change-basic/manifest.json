@@ -1,0 +1,19 @@
+{
+  "name": "listen-selection-change-basic",
+  "label": "Listen Selection Change (Basic)",
+  "type": "widget",
+  "version": "1.16.0",
+  "exbVersion": "1.16.0",
+  "author": "Gavin Rehkemper, Esri Professional Services",
+  "description": "A simplified version of the 'list-selection-change' sample widget from the Experience Builder samples.",
+  "copyright": "",
+  "license": "",
+  "properties": {},
+  "translatedLocales": [
+    "en"
+  ],
+  "defaultSize": {
+    "width": 400,
+    "height": 400
+  }
+}

@@ -1,0 +1,62 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Build-and-Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Download Experience Builder
+        # WARNING:
+        # THIS METHOD OF DOWNLOADING EXPERIENCE BUILDER MAY BREAK IF ESRI CHANGES HOW DOWNLOADS WORK IN THE FUTURE.
+        # IN OTHER WORDS, IT COULD BREAK AT ANY TIME.
+        # THERE IS NO WARRANTY OR GUARANTEE THAT THIS COMMAND WILL WORK IN THE FUTURE.
+        # ONLY USE THIS COMMAND IF YOU UNDERSTAND HOW IT IS BEING USED AND ARE COMFORTABLE FIXING IT IF IT BREAKS:
+        run: curl -o exb.zip "$(curl -s 'https://downloads.arcgis.com/dms/rest/download/secured/arcgis-experience-builder-1.16.zip?f=json&folder=software%2FExperienceBuilder%2F1.16' | python3 -c "import sys, json; print(json.load(sys.stdin)['url'])")"
+      - name: Unzip Experience Builder
+        run: unzip -q exb.zip -d exb
+      - name: Copy Custom Widgets
+        run: cp -r widgets/* exb/ArcGISExperienceBuilder/client/your-extensions/widgets
+      - name: Copy Custom Themes
+        run: cp -r themes/* exb/ArcGISExperienceBuilder/client/your-extensions/themes
+      - name: Create App directory
+        run: mkdir public && cd public && mkdir apps && cd apps
+        working-directory: exb/ArcGISExperienceBuilder/server
+      - name: Copy apps
+        run: cp -r apps/* exb/ArcGISExperienceBuilder/server/public/apps
+      - name: NPM install client folder
+        run: npm ci
+        working-directory: exb/ArcGISExperienceBuilder/client
+      - name: NPM install in server folder
+        run: npm ci
+        working-directory: exb/ArcGISExperienceBuilder/server
+      - name: Build widgets - dev
+        run: npm run build:dev
+        working-directory: exb/ArcGISExperienceBuilder/client
+      - name: Build widgets
+        run: npm run build:prod
+        working-directory: exb/ArcGISExperienceBuilder/client
+      - name: Loop through all apps
+        working-directory: exb/ArcGISExperienceBuilder
+        run: find ./server/public/apps/* -mindepth 0 -maxdepth 0 -type d -exec bash -c "basename {} | node -e 'var fs = require(\"fs\");var stdinBuffer = fs.readFileSync(0);var folderName=stdinBuffer.toString().trim();require(\"./server/src/middlewares/dev/apps/app-download.js\").zipApp(folderName, folderName+\".zip\")'" \;
+      - name: Create build folder
+        working-directory: exb/ArcGISExperienceBuilder
+        run: mkdir build
+      - name: Move zips
+        working-directory: exb/ArcGISExperienceBuilder
+        run: mv *.zip build
+      - name: Unzip all
+        working-directory: exb/ArcGISExperienceBuilder/build
+        run: find -name '*.zip' -exec sh -c 'unzip -d "${1%.*}" "$1"' _ {} \;
+      - name: Delete zips
+        working-directory: exb/ArcGISExperienceBuilder/build
+        run: rm *.zip
+      - name: Deploy app zip to GH Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: exb/ArcGISExperienceBuilder/build
