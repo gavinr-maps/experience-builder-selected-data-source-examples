@@ -1,0 +1,22 @@
+{
+  "name": "listen-selection-change-wrong",
+  "label": "Listen Selection Change (Wrong)",
+  "type": "widget",
+  "version": "1.16.0",
+  "exbVersion": "1.16.0",
+  "dependency": [
+    "jimu-arcgis"
+  ],
+  "author": "Gavin Rehkemper, Esri Professional Services",
+  "description": "Do not follow this way to get the selection change in Experience Builder!",
+  "copyright": "",
+  "license": "",
+  "properties": {},
+  "translatedLocales": [
+    "en"
+  ],
+  "defaultSize": {
+    "width": 800,
+    "height": 500
+  }
+}
