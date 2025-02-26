@@ -1,0 +1,29 @@
+{
+  "created": 1740590312426,
+  "description": "",
+  "id": "listen-selection-change",
+  "modified": 1740593906578,
+  "owner": "GRehkemper@esri.com_prof_services",
+  "tags": [],
+  "thumbnail": null,
+  "title": "Listen Selection Change",
+  "type": "Web Experience",
+  "snippet": "",
+  "typeKeywords": [
+    "EXB Experience",
+    "Ready To Use",
+    "JavaScript",
+    "status: Published",
+    "version:1.16.0",
+    "publishVersion:1.16.0"
+  ],
+  "portalUrl": "https://prof-services.maps.arcgis.com",
+  "username": "GRehkemper@esri.com_prof_services",
+  "name": "Listen Selection Change",
+  "isLocalApp": true,
+  "userRole": "org_admin",
+  "success": true,
+  "text": "",
+  "clearEmptyFields": true,
+  "url": null
+}

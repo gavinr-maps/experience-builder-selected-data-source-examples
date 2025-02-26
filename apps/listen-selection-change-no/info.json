@@ -1,12 +1,12 @@
 {
   "created": 1740590312426,
   "description": "",
-  "id": "11",
-  "modified": 1740593865031,
+  "id": "listen-selection-change-no",
+  "modified": 1740605314006,
   "owner": "GRehkemper@esri.com_prof_services",
   "tags": [],
   "thumbnail": null,
-  "title": "Listen Selection Change - Basic",
+  "title": "Listen Selection Change - NO",
   "type": "Web Experience",
   "snippet": "",
   "typeKeywords": [
@@ -14,11 +14,12 @@
     "Ready To Use",
     "JavaScript",
     "status: Published",
-    "version:1.16.0"
+    "version:1.16.0",
+    "publishVersion:1.16.0"
   ],
   "portalUrl": "https://prof-services.maps.arcgis.com",
   "username": "GRehkemper@esri.com_prof_services",
-  "name": "Listen Selection Change - Basic",
+  "name": "Listen Selection Change - NO",
   "isLocalApp": true,
   "userRole": "org_admin",
   "success": true,
